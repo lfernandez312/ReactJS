@@ -21,7 +21,7 @@ const NavBar = () => {
           className="text-white dark:text-white md:hidden"
           onClick={toggleMenu}
         >
-          {/* Icono hamburguesa*/}
+          {/* Icono hamburguesa */}
           <span className="material-icons">menu</span>
         </button>
       </div>
@@ -36,11 +36,12 @@ const NavBar = () => {
         <li><a href="#" className="text-white dark:text-white">Iniciar Sesión</a></li>
       </ul>
 
-      {/* Carrito y Modo Oscuro a la derecha */}
+      {/* Carrito y Modo Oscuro a la derecha dentro del nav */}
       <div className="ml-auto flex space-x-4">
         <CartWidget />
         <DarkModeToggle />
       </div>
+
     </nav>
   );
 };
