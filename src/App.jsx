@@ -1,19 +1,21 @@
 import "./App.css";
 // import NavBar from "./components/NavBar";
-import {NavBar, saludo} from "./components/NavBar/NavBar";
+import { NavBar, saludo } from "./components/NavBar/NavBar";
 import Banner from "./components/Banner/Banner";
-
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 
 function App() {
-
   const condicion = true;
 
-  const estilosh1 = {color : condicion==true ? "red" : "blue", fontSize: "50px"}
+  const greetingMessage = saludo + " Bienvenido a nuestra tienda de productos";
+
   return (
     <div>
-      <NavBar/>
-      <h1 style={estilosh1}>{saludo}</h1>
-      <Banner></Banner>
+      <NavBar />
+      <div>
+        <ItemListContainer greeting={greetingMessage} />
+      </div>
+      <Banner />
     </div>
   );
 }

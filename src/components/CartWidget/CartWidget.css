@@ -1,0 +1,33 @@
+.cart-widget-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-widget-icon {
+    width: 40px;
+    height: 40px;
+    color: #fff;
+    background-color: #28a745; /* Puedes usar otro color si lo deseas */
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cart-widget-notification {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ff0000;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

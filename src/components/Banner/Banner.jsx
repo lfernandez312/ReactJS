@@ -1,12 +1,15 @@
-import bannerImage from "../../assets/banner.jpg"
-import "./Banner.css"
+import bannerImage from "../../assets/banner.jpg";
 
-const Banner = () =>{
-    return(
-        <div>
-            <img className="banner-image" src={bannerImage} />
-        </div>
-    )
-}
+const Banner = () => {
+  return (
+    <div>
+      <img
+        className="w-full h-auto max-h-84 object-cover"
+        src={bannerImage}
+        alt="Banner"
+      />
+    </div>
+  );
+};
 
 export default Banner;
