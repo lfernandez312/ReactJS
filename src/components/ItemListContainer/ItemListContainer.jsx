@@ -1,11 +1,31 @@
+import { useEffect, useState } from "react";
+import { getProducts } from "../../data/data";
+
 const ItemListContainer = ({ greeting }) => {
+
+    const [products, setProducts] = useState([])
+
+    useEffect(() => {
+        getProducts()
+        .then((data) => {
+            setProducts(data);
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+        .finally(() => {
+            console.log("terminó la promesa");
+        });
+    }, []);
+
+    console.log(products);
+
     return (
-      <div className="max-w-screen-xl mx-auto px-2 py-2 text-center bg-red-600 dark:bg-red-800">
-        <h2 className="text-white text-xl font-semibold dark:text-white">{greeting}</h2>
-      </div>
+        <div className="bg-red-600 p-6 text-center dark:bg-red-800">
+            {/* Mostrar el mensaje de bienvenida */}
+            <h1 className="text-white text-xl font-semibold mb-4">{greeting}</h1>
+        </div>
     );
 };
-  
-export default ItemListContainer;
 
-  
+export default ItemListContainer;
