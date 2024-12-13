@@ -1,6 +1,7 @@
-const Item = ({ product }) => {
+const ItemApi = ({ product }) => {
     return (
         <div className="p-4 bg-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 max-w-xs mx-auto dark:bg-gray-800 dark:text-white">
+            
             <img 
                 src={product.imageUrl} 
                 alt={product.name} 
@@ -12,9 +13,9 @@ const Item = ({ product }) => {
             <button className="mt-4 w-full bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors dark:bg-yellow-600 dark:text-black dark:hover:bg-yellow-500">
                 Agregar al carrito
             </button>
-        </div>
-        
+        </div> 
+    
     );
 };
 
-export default Item;
+export default ItemApi;

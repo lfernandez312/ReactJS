@@ -10,7 +10,6 @@ function App() {
     <div>
       <NavBar />
       <Banner />
-      {/* Aquí pasamos el mensaje a ItemListContainer */}
       <ItemListContainer greeting={greetingMessage} />
     </div>
   );
