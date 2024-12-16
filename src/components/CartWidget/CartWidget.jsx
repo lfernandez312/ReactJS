@@ -12,7 +12,7 @@ const CartWidget = () => {
 
             {/* Notificación de cantidad */}
             {cantidad > 0 && (
-                <span className="absolute top-0 right-0 block bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {cantidad}
                 </span>
             )}
