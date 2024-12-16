@@ -1,11 +1,11 @@
-import bannerImage from "../../../public/img/Banner.jpg";
+// import bannerImage from "../../../public/img/Banner.jpg"; NO ES RECOMENDABLE IMPORTAR DESDE PUBLIC
 
 const Banner = () => {
   return (
     <div>
       <img
         className="w-full h-auto max-h-84 object-cover"
-        src={bannerImage}
+        src="/img/banner.jpg"
         alt="Banner"
       />
     </div>

@@ -6,7 +6,7 @@ const products = [
         price: 25000,
         stock: 15,
         category: "ABC",
-        imageUrl: "/img/1kg.png"
+        imageUrl: "https://www.starfirematafuegos.com.ar/tienda/admin/storage/products/D_NQ_NP_2X_671419-MLA29635972691_032019-F-removebg-preview.png"
     },
     {
         id: 2,

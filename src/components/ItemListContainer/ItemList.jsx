@@ -1,5 +1,5 @@
-import ItemApi from "./ItemApi"
-// import Item from "./Item" item de matafuegos
+// import ItemApi from "./ItemApi"
+import Item from "./Item"
 
 const ItemList = ({products}) => {
   return (
@@ -7,7 +7,7 @@ const ItemList = ({products}) => {
     {
         products.map((product) => (
             // <Item product={product} key={product.id}/>
-            <ItemApi product={product} key={product.id}/>
+            <Item product={product} key={product.id}/>
         ))
     }
     </div>
