@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const DarkModeToggle = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(null); // Inicialmente es null
 
   useEffect(() => {
     // Cargar el modo oscuro desde localStorage
@@ -9,12 +9,15 @@ const DarkModeToggle = () => {
     if (storedMode) {
       setDarkMode(storedMode === "true");
     } else {
+      // Si no hay valor en localStorage, usar la preferencia del sistema
       setDarkMode(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
     }
   }, []);
 
   useEffect(() => {
-    // Aplicar el modo oscuro al body y guardarlo en localStorage
+    if (darkMode === null) return;
+
+    // Aplica el modo oscuro al body y guardarlo en localStorage
     if (darkMode) {
       document.body.classList.add("dark");
       localStorage.setItem("darkMode", "true");
@@ -24,8 +27,15 @@ const DarkModeToggle = () => {
     }
   }, [darkMode]);
 
+  if (darkMode === null) {
+    return null; 
+  }
+
   return (
-    <button onClick={() => setDarkMode(!darkMode)} className="p-1 bg-gray-300 rounded-full">
+    <button
+      onClick={() => setDarkMode(!darkMode)}
+      className="p-1 bg-gray-300 rounded-full"
+    >
       {darkMode ? "🌙" : "☀️"}
     </button>
   );

@@ -186,6 +186,8 @@ const getProducts = () => {
         setTimeout(() => {
             resolve(products);
         }, 2000);
+        // resolve(products);
+
     });
 };
 

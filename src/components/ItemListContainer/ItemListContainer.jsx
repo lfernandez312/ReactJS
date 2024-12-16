@@ -1,47 +1,43 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../data/data";
 import ItemList from "./ItemList";
-// import { getProducts, addProduct, modProductById} from "../../utils/fetchApi";
+import { useParams } from "react-router-dom";
+import Loader from "../../utils/loader";
 
 const ItemListContainer = ({ greeting }) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const [products, setProducts] = useState([])
+  const { idCategory } = useParams();
 
-    const newProduct = {
-        "name": "ABC 10 Kg",
-        "description": "Matafuegoo ideal para fuegos eléctricos y líquidos inflamables.",
-        "price": 10000,
-        "stock": 8,
-        "category": "ABC",
-        "imageUrl": "https://www.starfirematafuegos.com.ar/tienda/admin/storage/products/D_NQ_NP_2X_671419-MLA29635972691_032019-F-removebg-preview.png"
-    }
-    const mod = {
-        price: 65000,
-    }
+  useEffect(() => {
+    setLoading(true);
+    getProducts()
+      .then((data) => {
+        if (idCategory) {
+          const filteredProducts = data.filter((product) => product.category === idCategory);
+          setProducts(filteredProducts);
+        } else {
+          setProducts(data);
+        }
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, [idCategory]);
 
-    useEffect(() => {
-        getProducts()
-            .then((data)=> setProducts(data) )
-    },[])
-
-    // const clickEvento = () => {
-    //     addProduct(newProduct)
-    //     .then((data)=> setProducts(data) )
-
-    // }
-    // const clickEventoActualizar = () => {
-    //     modProductById(2, mod)
-    //     .then((data)=> setProducts(data) )
-    // }
-
-    return (
-        <div className="bg-red-600 p-6 text-center dark:bg-red-800">
-            <h1 className="text-white text-xl font-semibold mb-4">{greeting}</h1>
-            {/* <button onClick={clickEvento}>Añadir Productos</button> */}
-            {/* <button onClick={clickEventoActualizar}>Modificar Productos</button> */}
-            <ItemList products={products}/>
-        </div>
-    );
+  return (
+    <>
+      <div className="bg-red-600 p-6 text-center dark:bg-red-800">
+        <h1 className="text-white text-xl font-semibold mb-4">
+          {greeting} {idCategory ? `- Categoria Buscada: ${idCategory}` : ""}
+        </h1>
+      </div>
+      <div className="flex justify-center items-center mt-6">
+        <Loader loading={loading} />
+        {!loading && <ItemList products={products} />}
+      </div>
+    </>
+  );
 };
 
 export default ItemListContainer;
