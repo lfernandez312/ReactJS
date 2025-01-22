@@ -4,7 +4,7 @@ const Item = ({ product }) => {
     return (
         <div className="p-4 bg-white rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300 max-w-xs mx-auto dark:bg-gray-800 dark:text-white relative z-30">
             <img 
-                src={product.imageUrl} 
+                src={product.imageUrl[0]} 
                 alt={product.name} 
                 className="w-full h-48 object-contain rounded-lg mb-4"
             />

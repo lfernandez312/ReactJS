@@ -1,22 +1,20 @@
-import "./CartWidget.css"
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { PiShoppingCartBold } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const CartWidget = () => {
-    const cantidad = 5; // Número hardcodeado de items en el carrito (puede ser cualquier número)
+    const { totalQuantity } = useContext(CartContext);
 
     return (
-        <div className="relative">
-            {/* Ícono de carrito */}
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h18M3 3l3 18h12l3-18H3z" />
-            </svg>
-
-            {/* Notificación de cantidad */}
-            {cantidad > 0 && (
-                <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
-                    {cantidad}
-                </span>
-            )}
-        </div>
+        <Link to="/cart"
+            className="relative flex items-center cursor-pointer p-2 rounded-lg hover:bg-gray-100 transition duration-200"
+        >
+            <PiShoppingCartBold className="text-2xl text-gray-700" />
+            <p className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex justify-center items-center">
+                {totalQuantity()}
+            </p>
+        </Link>
     );
 };
 
