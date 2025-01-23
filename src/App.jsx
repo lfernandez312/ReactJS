@@ -8,6 +8,8 @@ import { CartProvider } from "./context/CartContext";
 import LoadProductsPage from "./data/LoadProductsPage";
 import Cart from "./components/Cart/Cart";
 import Checkout from "./components/Checkout/Checkout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Importar estilos de Toastify
 
 function App() {
   const greetingMessage = "Bienvenido a nuestra tienda";
@@ -18,21 +20,30 @@ function App() {
         <CartProvider>
           <NavBar />
           <Routes>
-            <Route path="/" element={
+            <Route
+              path="/"
+              element={
                 <>
                   <Banner />
                   <ItemListContainer greeting={greetingMessage} />
                 </>
               }
             />
-            <Route path="/load-products" element={<LoadProductsPage />} /> {/* Ruta donde cargará los productos */}
-            <Route path="/category/:idCategory" element={<ItemListContainer greeting="Explora nuestras categorías" />}/>
+            <Route
+              path="/load-products"
+              element={<LoadProductsPage />}
+            />
+            <Route
+              path="/category/:idCategory"
+              element={<ItemListContainer greeting="Explora nuestras categorías" />}
+            />
             <Route path="/item/:idProduct" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </CartProvider>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }
