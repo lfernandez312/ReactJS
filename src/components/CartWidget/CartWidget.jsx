@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 const CartWidget = () => {
     const { totalQuantity } = useContext(CartContext);
 
+    if (totalQuantity() === 0) {
+        return null;
+    }
+
     return (
         <Link to="/cart"
             className="relative flex items-center cursor-pointer p-2 rounded-lg hover:bg-gray-100 transition duration-200"

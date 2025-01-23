@@ -1,4 +1,5 @@
 const products = [
+    //este archivo es para crear productos manualmente
     {
         id: 1,
         name: "Matafuego ABC 1 Kg",
@@ -67,7 +68,7 @@ const getProducts = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(products);
-        }, 2000);
+        }, 1500);
     });
 };
 

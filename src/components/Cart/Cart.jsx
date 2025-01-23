@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom"; // Importa Link para la redirección
 import { CartContext } from "../../context/CartContext";
 
 const Cart = () => {
@@ -57,6 +58,9 @@ const Cart = () => {
 
                     {/* Botón para vaciar el carrito */}
                     <div className="mt-6 flex justify-end">
+                        <Link className="mt-4 inline-block bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 transition duration-200 dark:bg-blue-600 dark:hover:bg-blue-700" to="/checkout">Procesar Compra</Link>
+                    </div>
+                    <div className="mt-6 flex justify-end">
                         <button
                             onClick={clearCart}
                             className="bg-red-500 text-white rounded-lg px-4 py-2 hover:bg-red-600 transition duration-200 dark:bg-red-600 dark:hover:bg-red-700"
@@ -65,13 +69,22 @@ const Cart = () => {
                         </button>
                     </div>
 
+
                     {/* Precio total */}
                     <div className="mt-6 text-right">
                         <h3 className="text-2xl font-bold dark:text-white">Precio Total: ${totalPrice()}</h3>
                     </div>
                 </>
             ) : (
-                <p className="text-center text-gray-600 dark:text-gray-300">El carrito está vacío.</p>
+                <div className="text-center">
+                    <p className="text-gray-600 dark:text-gray-300">El carrito está vacío.</p>
+                    <Link
+                        to="/"
+                        className="mt-4 inline-block bg-blue-500 text-white rounded-lg px-4 py-2 hover:bg-blue-600 transition duration-200 dark:bg-blue-600 dark:hover:bg-blue-700"
+                    >
+                        Volver al Inicio
+                    </Link>
+                </div>
             )}
         </div>
     );

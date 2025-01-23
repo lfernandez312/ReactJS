@@ -5,7 +5,9 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartProvider } from "./context/CartContext";
+import LoadProductsPage from "./data/LoadProductsPage";
 import Cart from "./components/Cart/Cart";
+import Checkout from "./components/Checkout/Checkout";
 
 function App() {
   const greetingMessage = "Bienvenido a nuestra tienda";
@@ -25,9 +27,11 @@ function App() {
                 </>
               }
             />
+            <Route path="/load-products" element={<LoadProductsPage />} /> {/* Ruta donde cargará los productos */}
             <Route path="/category/:idCategory" element={<ItemListContainer greeting="Explora nuestras categorías" />}/>
             <Route path="/item/:idProduct" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </CartProvider>
       </BrowserRouter>
